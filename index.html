@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="dist/main.css">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <label for="navbar-toggle" class="navbar-toggle-label">
+        <img src="https://i.postimg.cc/tTqGtgJF/Vector2.png" alt="" class="hamburger">
+      </label>
+      <input type="checkbox" class="navbar-toggle" id="navbar-toggle">
+      <nav>
+        <ul class="nav-list flex-center flex-column">
+          <li class="nav-item"><a href="" class="nav-link">男款</a></li>
+          <li class="nav-item"><a href="" class="nav-link">女款</a></li>
+          <li class="nav-item"><a href="" class="nav-link">最新消息</a></li>
+          <li class="nav-item"><a href="" class="nav-link">客製商品</a></li>
+          <li class="nav-item"><a href="" class="nav-link">聯絡我們</a></li>
+        </ul>
+      </nav>
+
+      <a href="" class="navbar-brand flex-center">
+        <img src="https://i.postimg.cc/Dzmr54YT/logo-2.png" alt="" class="navbar-brand_logo">
+        <span class="navbar-brand_name">ALPHA Shop</span>
+      </a>
+      <!-- light mode icons -->
+      <div class="navbar-icons-container icons-light-mode d-none">
+        <a href="#"><img src="https://i.postimg.cc/fTgVwqRx/lm-icon-search.png" alt="search" class="navbar-icon"></a>
+        <a href="#"><img src="https://i.postimg.cc/d329MPYm/lm-icon-cart.png" alt="cart" class="navbar-icon"></a>
+        <a href="#"><img src="https://i.postimg.cc/NfQ6yntS/lm-icon-mode.png" alt="mode" class="navbar-icon"></a>
+      </div>
+      <!-- dark mode icons -->
+      <div class="navbar-icons-container icons-dark-mode d-none">
+        <a href="#"><img src="https://i.postimg.cc/0jQ74Rr4/icon-search2.png" alt="search" class="navbar-icon"></a>
+        <a href="#"><img src="https://i.postimg.cc/rw2fYsCR/icon-cart2.png" alt="cart" class="navbar-icon"></a>
+        <a href="#"><img src="https://i.postimg.cc/k47QxtCq/icon-mode2.png" alt="mode" class="navbar-icon"></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container main_container">
+      <!-- 結帳`區 -->
+      <section class="billing-area">
+        <!--  Title  -->
+        <div class="billing-area_title">結帳</div>
+        <!--  Steps  -->
+        <div id="billing-area_step-control" class="billing-area_stepper-panel">
+          <div class="steps-container">
+            <div id="step-1" class="step active-dark">
+              <div class="circle-label-wrapper">
+                <div class="step_circle"></div>
+                <div class="step_label">寄送地址</div>
+              </div>
+              <span class="step_connect-line"></span>
+            </div>
+            <div id="step-2" class="step">
+              <div class="circle-label-wrapper">
+                <div class="step_circle"></div>
+                <div class="step_label">運送方式</div>
+              </div>
+              <span class="step_connect-line"></span>
+            </div>
+            <div id="step-3" class="step">
+              <div class="circle-label-wrapper">
+                <div class="step_circle"></div>
+                <div class="step_label">付款資訊</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form  -->
+        <div class="billing-area_form-panel">
+          <form id="a-form">
+            <!--   part 1   -->
+            <div class="part part-1">
+              <div class="form-title">寄送地址</div>
+              <div class="form-content">
+                <div class="form-content_form-row-container">
+                  <div class="form-row d-flex flex-column">
+                    <label for="">稱謂</label>
+                    <div class="select-wrapper">
+                      <select name="" id="">
+                        <option value="">先生</option>
+                        <option value="">女士</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row d-flex flex-column">
+                    <label for="">姓名</label>
+                    <input type="text" placeholder="請輸入姓名">
+                  </div>
+                </div>
+                <div class="form-content_form-row-container">
+                  <div class="form-row d-flex flex-column">
+                    <label for="">電話</label>
+                    <input type="text" placeholder="請輸入行動電話">
+                  </div>
+                  <div class="form-row d-flex flex-column">
+                    <label for="">Email</label>
+                    <input type="text" placeholder="請輸入電子郵件">
+                  </div>
+                </div>
+                <div class="form-content_form-row-container">
+                  <div class="form-row d-flex flex-column">
+                    <label for="">縣市</label>
+                    <div class="select-wrapper">
+                      <select name="" id="city-option" required>
+                        <option value="" disabled selected>請選擇縣市</option>
+                        <!--                       <option value="">台北</option>
+                        <option value="">台中</option>
+                        <option value="">台南</option>
+                        <option value="">高雄</option>
+                        <option value="">花蓮</option> -->
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row d-flex flex-column">
+                    <label for="">地址</label>
+                    <input type="text" placeholder="請輸入地址">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--   part 2   -->
+            <div class="part part-2 d-none">
+              <div class="form-title">運送方式</div>
+              <div class="form-content">
+                <div class="form-row">
+                  <div class="form-row_input-info-wrapper">
+                    <input name="delivery" type="radio" value="normal-delivery">
+                    <label for="">
+                      <div class="delivery-way">標準運送</div>
+                      <div class="delivery-time">約 3~7 個工作天</div>
+                    </label>
+                  </div>
+                  <div class="form-row_price">免費</div>
+                </div>
+                <div class="form-row">
+                  <div class="form-row_input-info-wrapper">
+                    <input name="delivery" type="radio" value="DHL">
+                    <label for="">
+                      <div class="delivery-way"><strong>DHL 貨運</strong></div>
+                      <div class="delivery-time">48 小時內送達</div>
+                    </label>
+                  </div>
+                  <div class="form-row_price">$500</div>
+                </div>
+              </div>
+            </div>
+            <!--   part 3   -->
+            <div class="part part-3 d-none">
+              <div class="form-title">付款資訊</div>
+              <div class="form-content">
+                <div class="form-row form-row-single d-flex flex-column">
+                  <label for="">持卡人姓名</label>
+                  <input type="text" placeholder="John Doe">
+                </div>
+                <div class="form-row form-row-single d-flex flex-column">
+                  <label for="">卡號</label>
+                  <input type="text" placeholder="1111 2222 3333 4444">
+                </div>
+                <div class="form-content_form-row-container">
+                  <div class="form-row d-flex flex-column">
+                    <label for="">有效期限</label>
+                    <input type="text" placeholder="MM/YY">
+                  </div>
+                  <div class="form-row d-flex flex-column">
+                    <label for="">CVC / CCV</label>
+                    <input type="text" placeholder="123">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </section>
+
+      <!-- 購物車專區 -->
+      <section id="shopping-cart-area" class="shopping-cart-area">
+        <div class="shopping-cart-area_container">
+          <div class="shopping-cart-area_title">購物籃</div>
+          <div class="shopping-cart-area_items">
+            <!-- Render shopping-cart-items  -->
+          </div>
+          <div class="shopping-cart-area_fees">
+            <div class="fee">
+              <div class="fee_title">運費</div>
+              <div class="fee_amount">免費</div>
+            </div>
+            <div class="fee">
+              <div class="fee_title">小計</div>
+              <div class="fee_amount">$5298</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- btn 區 -->
+      <section id="btn-control-area" class="btn-control-area">
+        <button disabled class="btn btn-outline">上一步</button>
+        <button class="btn btn-primary">下一步</button>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer 區 -->
+  <footer id="footer" class="footer">
+    <div class="container footer-container d-flex justify-content-between">
+      <div class="footer_brand flex-center">
+        <img src="https://i.postimg.cc/Dzmr54YT/logo-2.png" alt="" class="navbar-brand_logo">
+        <span class="navbar-brand_name">ALPHA Shop</span>
+      </div>
+
+      <ul class="footer_block">
+        <li class="footer_block_title">客戶服務</li>
+        <li class="footer_block_list"><a href="">運送說明</a></li>
+        <li class="footer_block_list"><a href="">退換貨相關</a></li>
+        <li class="footer_block_list"><a href="">付款資訊</a></li>
+        <li class="footer_block_list"><a href="">FAQ</a></li>
+      </ul>
+
+      <ul class="footer_block">
+        <li class="footer_block_title">關於我們</li>
+        <li class="footer_block_list"><a href="">品牌故事</a></li>
+        <li class="footer_block_list"><a href="">媒體連繫</a></li>
+        <li class="footer_block_list"><a href="">Press kit</a></li>
+
+      </ul>
+
+      <ul class="footer_block">
+        <li class="footer_block_title">資訊</li>
+        <li class="footer_block_list"><a href="">隱私權政策</a></li>
+        <li class="footer_block_list"><a href="">Cookie</a></li>
+        <li class="footer_block_list"><a href="">GDPR</a></li>
+      </ul>
+
+      <ul class="footer_block">
+        <li class="footer_block_title">追蹤 ALPHA SHOP</li>
+        <li class="footer_block_list">+886 02123-45678</li>
+        <li class="footer_block_list social-media-icons-container d-flex justify-content-between">
+          <a class="social-media-link" href="https://www.facebook.com/" target="_blank">
+            <img src="https://i.postimg.cc/d1DtFdpN/icon-fb.png" alt="FB icon" class="social-media-icon">
+          </a>
+          <a class="social-media-link" href="https://www.facebook.com/" target="_blank">
+            <img src="https://i.postimg.cc/c1nt8yk9/icon-ig.png" alt="IG icon" class="social-media-icon">
+          </a>
+          <a class="social-media-link" href="https://www.facebook.com/" target="_blank">
+            <img src="https://i.postimg.cc/nr4LSx6n/icon-whatsapp.png" alt="Whatsapp icon" class="social-media-icon">
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </footer>
+
+  <script src="dist/bundle.js"></script>
+</body>
+
+</html>

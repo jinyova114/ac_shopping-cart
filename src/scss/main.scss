@@ -1,0 +1,782 @@
+@import './basic';
+@import './reset';
+@import './color';
+
+/********* 全域樣式 *********/
+body {
+  color: $main-color;
+}
+
+/********* 手機板樣式 *********/
+body {
+  position: relative;
+  min-height: 100%;
+  height: 100% !important;
+  // overflow: auto;
+  // overflow-y: scroll;
+}
+
+// Header 區塊
+header {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 56px;
+  background-color: white;
+
+  .container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.navbar-toggle-label {
+  margin-left: 15px;
+
+  .hamburger {
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 15px;
+  }
+}
+
+nav {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  padding-bottom: 20px;
+  background-color: #f0f0f5;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 8px;
+  transition: transform 0.5s ease-out;
+  transform: scale(1, 0);
+  transform-origin: top;
+
+  .nav-item {
+    margin-top: 20px;
+    opacity: 0;
+  }
+
+  .nav-link {
+    color: $main-color;
+  }
+}
+
+.navbar-toggle {
+  visibility: hidden;
+
+  &:checked~nav {
+    transform: scale(1, 1);
+  }
+
+  &:checked~nav .nav-item {
+    opacity: 1;
+    transition: opacity 0.5s ease-out 0.49s;
+  }
+}
+
+.navbar-brand {
+  @include absolute-center;
+
+  &_logo {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+
+  &_name {
+    color: $main-color;
+    font-weight: bold;
+  }
+}
+
+// 主要內容區
+main {
+  position: absolute;
+  top: 56px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.billing-area {
+  &_title {
+    margin: 16px 0 24px 0;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 38px;
+  }
+
+  &_stepper-panel {
+    height: 38px;
+  }
+}
+
+// step區排版
+.steps-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  #step-1,
+  #step-2 {
+    width: calc(50%);
+    position: relative;
+
+    .step_connect-line {
+      position: absolute;
+      right: calc((100% - 32px) / 2);
+      top: 50%;
+      transform: translate(+50%, -50%);
+    }
+  }
+
+  #step-3 {
+    display: flex;
+    justify-content: end;
+  }
+}
+
+// step區樣式
+.step {
+  @include getStepNums(3);
+
+  &_circle {
+    position: relative;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: 1px solid $sub-color;
+  }
+
+  &_label {
+    display: none;
+  }
+
+  &_connect-line {
+    min-width: 60px;
+    width: 30%;
+    height: 1px;
+    border: 1px solid $sub-color;
+    background-color: $sub-color;
+    margin: auto;
+  }
+}
+
+// 設定不同狀態的Steps
+.step.active-dark {
+
+  .step_circle,
+  .step_connect-line {
+    @include step-mode($main-color, $main-color, white);
+  }
+
+  .step_label {
+    color: $main-color;
+  }
+}
+
+.step.active-light {
+  .step_circle {
+    @include step-mode($main-color, white, $main-color);
+  }
+
+  .step_connect-line {
+    @include step-mode($main-color, $main-color, white);
+  }
+
+  .step_label {
+    color: $main-color;
+  }
+}
+
+.step.checked {
+
+  .step_circle,
+  .step_connect-line {
+    @include step-mode($main-color, $main-color, white);
+  }
+
+  .step_circle::after {
+    content: ""; //\2713
+    background-image: url("https://i.postimg.cc/25LjgwwR/ic-baseline-check2.png");
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 32px;
+    @include absolute-center;
+    background-size: cover;
+  }
+
+  .step_label {
+    color: $main-color;
+  }
+}
+
+// Form 區樣式
+// 輸入框統一基本樣式
+%input-style {
+  height: 40px;
+  font-size: 12px;
+  border: 1px solid #4a4a4a;
+  border-radius: 5px;
+  padding-left: 1em;
+
+  &:hover,
+  &:focus {
+    border: 1px solid $sub-color;
+  }
+}
+
+// 通用每一個part
+.part {
+  .form-title {
+    margin-bottom: 24px;
+    margin-top: 24px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .form-content_form-row-container {
+    margin-bottom: 8px;
+  }
+}
+
+.form-row {
+  margin-bottom: 16px;
+
+  label {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #808080;
+  }
+
+  input {
+    @extend %input-style;
+
+    &::placeholder {
+      color: #999999;
+    }
+
+    &[type="radio"] {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      margin: auto 20px auto 0;
+      border: 1px solid $main-color;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $sub-color;
+      }
+
+      &:checked {
+        box-shadow: inset 0px 0px 0px 5px $main-color;
+      }
+
+      ~label {
+        margin: auto;
+        color: $main-color;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .select-wrapper {
+    position: relative;
+    z-index: 0;
+
+    &::after {
+      content: "";
+      border-style: solid;
+      border-width: 6px 5px 0 5px;
+      border-color: $main-color transparent transparent transparent;
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      z-index: -1;
+    }
+
+    select {
+      @extend %input-style;
+      width: 100%;
+      -webkit-appearance: none;
+      cursor: pointer;
+      background-color: transparent;
+
+      &:invalid {
+        color: #808080;
+      }
+    }
+  }
+}
+
+// 獨立part
+.part.part-1 {
+  .form-content {
+
+    &_form-row-container:first-child,
+    &_form-row-container:last-child {
+      display: grid;
+      grid-template-columns: 34% 1fr;
+      grid-gap: 30px;
+    }
+  }
+}
+
+.part.part-2 {
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    border: 1px solid $light-gray;
+    border-radius: 4px;
+
+    &_input-info-wrapper {
+      display: flex;
+      margin-left: 20px;
+
+      .delivery-way {
+        font-size: 14px;
+      }
+    }
+
+    &_price {
+      margin-right: 20px;
+      margin-top: 13px;
+      font-size: 12px;
+    }
+  }
+}
+
+.part.part-3 {
+  .form-content {
+    &_form-row-container {
+      display: grid;
+      grid-template-columns: 44% 45%;
+      grid-gap: 30px;
+    }
+  }
+}
+
+// 購物籃區
+.shopping-cart-area {
+  width: 100%;
+  max-width: 440px;
+  margin-bottom: 32px;
+  border: 1px solid #f0f0f5;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  &_container {
+    margin: 16px;
+  }
+
+  &_title,
+  &_items,
+  &_fees {
+    margin-top: 16px;
+  }
+
+  &_title {
+    display: none;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 22px;
+  }
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+
+  &_image {
+    height: 100px;
+    width: 100px;
+  }
+
+  &_info {
+    text-align: right;
+
+    &_price {
+      font-weight: bold;
+    }
+
+    &_detail {
+      display: flex;
+      margin-bottom: 10px;
+      flex-direction: column;
+      align-items: end;
+
+      &_amount-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 116px;
+        margin-top: 18px;
+
+        .amount {
+          font-size: 14px;
+          margin: auto;
+        }
+
+        .amount-add,
+        .amount-minus {
+          width: 26px;
+          height: 27px;
+          background-color: #f0f0f5;
+          border-radius: 50%;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.fee {
+  border-top: 1px solid #f0f0f5;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  height: 37px;
+  margin-bottom: 16px;
+  font-size: 14px;
+
+  &_amount {
+    font-weight: bold;
+  }
+}
+
+.btn-control-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  height: 112px;
+  padding-bottom: 40px;
+
+  .btn {
+    height: 46px;
+
+    &[disabled] {
+      display: none;
+    }
+  }
+
+  .btn-outline {
+    display: flex;
+    padding-top: 15px;
+    width: 100%;
+    background-color: transparent;
+    border-color: transparent;
+
+    &::before {
+      content: "← ";
+      font-size: 20px;
+      padding-right: 10px;
+    }
+  }
+
+  .btn-primary {
+    width: 100%; //156px;
+    background-color: #f67599;
+    border-radius: 8px;
+    color: white;
+    position: relative;
+
+    &::after {
+      content: " →";
+      font-size: 20px;
+    }
+  }
+}
+
+footer {
+  display: none;
+}
+
+/********* 電腦版樣式 *********/
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 1110px;
+  }
+
+  header {
+    height: 60px;
+
+    .container {
+      width: 90%;
+    }
+
+    .navbar-toggle-label {
+      display: none;
+    }
+
+    nav {
+      all: unset;
+
+      .nav-list {
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+
+      .nav-item {
+        margin: 0;
+        opacity: 1;
+        margin-right: 32px;
+      }
+    }
+
+    .navbar-brand {
+      &_logo {
+        width: 30px;
+        height: 30px;
+      }
+
+      &_name {
+        font-size: 18px;
+      }
+    }
+  }
+
+  // PC - icons 共用
+  .navbar-icons-container {
+    width: 132px;
+
+    .navbar-icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // PC - icons light mode
+  .icons-light-mode {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  .main-content {
+    height: 100%;
+
+    .container {
+      position: relative;
+    }
+
+    .billing-area,
+    .shopping-cart-area,
+    .btn-control-area {
+      position: absolute;
+    }
+  }
+
+  // PC - 左邊結帳區塊
+  .billing-area {
+    width: 48.5%;
+    top: 80px;
+
+    &_title {
+      margin-top: 0;
+      font-size: 32px;
+    }
+
+    &_stepper-panel {
+      margin-top: 48px;
+      height: 24px;
+
+      .step {
+        .circle-label-wrapper {
+          display: flex;
+          width: 96px;
+          padding: 0;
+        }
+
+        &_circle {
+          width: 24px;
+          height: 24px;
+          margin-right: 8px;
+        }
+
+        &_label {
+          display: inline;
+          color: $sub-color;
+        }
+
+        .step_connect-line {
+          left: calc((100%-96px) / 2 - 30px);
+        }
+      }
+
+      .step.checked {
+        .step_circle::after {
+          height: 24px;
+          width: 24px;
+        }
+      }
+    }
+
+    // PC - form 區統一樣式
+    &_form-panel {
+      margin-top: 64px;
+
+      .form-title {
+        margin-top: 0;
+      }
+
+      .form-content {
+        &_form-row-container {
+          margin-bottom: 0px;
+          margin-top: 24px;
+        }
+
+        .form-row {
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+
+  // PC - form 區各別 part 樣式
+  .part.part-1 {
+    .form-content {
+      &_form-row-container:nth-child(2) {
+        display: grid;
+        grid-template-columns: 1fr 50%;
+        grid-gap: 30px;
+      }
+
+      &_form-row-container:first-child,
+      &_form-row-container:last-child {
+        grid-template-columns: 30% 1fr;
+      }
+    }
+  }
+
+  .part.part-2 {
+    .form-row {
+      border: 1px solid #000;
+      margin-bottom: 24px;
+    }
+  }
+
+  .part.part-3 {
+    .form-row-single {
+      width: 65%;
+
+      &:nth-child(2) {
+        margin-top: 24px;
+      }
+    }
+
+    .form-content_form-row-container {
+      grid-template-columns: 46% 1fr;
+    }
+  }
+
+  // PC - 左邊按鈕區
+  .btn-control-area {
+    top: 590px;
+    width: 48.5%;
+
+    .btn-primary {
+      width: 174px;
+    }
+  }
+
+  // PC - 右邊購物籃區塊
+  .shopping-cart-area {
+    right: 0;
+    top: 166px;
+
+    &_container {
+      margin: 0 24px 32px 24px;
+    }
+
+    &_title,
+    &_items,
+    &_fees {
+      margin-top: 32px;
+    }
+
+    &_title {
+      display: block;
+    }
+  }
+
+  .item {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 32px;
+
+    &_info {
+      display: flex;
+      justify-content: space-between;
+      flex: 1;
+
+      &_detail {
+        align-items: start;
+        margin-left: 21px;
+      }
+
+      .amount {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .fee {
+    margin-bottom: 32px;
+  }
+
+  // PC - Footer
+  #footer {
+    display: block;
+    position: absolute;
+    bottom: -1100px;
+    width: 100%;
+    height: 284px;
+    background-color: #f6f7f8;
+  }
+
+  .footer_brand {
+    line-height: 284px;
+
+    .navbar-brand_logo {
+      width: 31px;
+      height: 31px;
+    }
+
+    .navbar-brand_name {
+      font-size: 19px;
+    }
+  }
+
+  .footer_block {
+    &_title {
+      margin-top: 64px;
+      margin-bottom: 24px;
+      color: $main-color;
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 24px;
+    }
+
+    &_list {
+      color: $footer-gray;
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: $footer-gray;
+    }
+
+    .social-media-icons-container {
+      width: 104px;
+      height: 24px;
+    }
+  }
+}
