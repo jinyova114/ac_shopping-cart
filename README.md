@@ -2,7 +2,9 @@
 
 ## General Info
 A demo of shopping cart page using Webpack and SASS
-![image](https://github.com/HsiaooooooJu/ac_shopping-cart/img/Group 1mobile.png)
+
+![image](https://github.com/jinyova114/ac_shopping-cart/blob/main/img/mobile-version.png)
+
 
 ## Features
 1. Users can view the page both in mobile and screen view port. 
